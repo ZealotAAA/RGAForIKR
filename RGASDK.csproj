@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>RGASDK</RootNamespace>
+    <AssemblyName>RGASDK</AssemblyName>
+    <Version>1.0.0</Version>
+    <Authors>RGA SDK Team</Authors>
+    <Company>RGA</Company>
+    <Product>RGA Modbus RTU SDK</Product>
+    <Description>RGA残余气体分析仪 Modbus RTU 通信SDK</Description>
+    <PackageTags>RGA;Modbus;Serial;RTU</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IO.Ports" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="tools\**" />
+    <Compile Remove="Examples\**" />
+    <Compile Remove="Test\**" />
+    <EmbeddedResource Remove="tools\**" />
+    <EmbeddedResource Remove="Examples\**" />
+    <EmbeddedResource Remove="Test\**" />
+    <None Remove="tools\**" />
+    <None Remove="Examples\**" />
+    <None Remove="Test\**" />
+  </ItemGroup>
+
+</Project>
