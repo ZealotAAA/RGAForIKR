@@ -364,6 +364,54 @@ public class RGACLient : IDisposable
     }
 
     /// <summary>
+    /// 开启灯丝
+    /// </summary>
+    public RGAOperationResult TurnOnFilament()
+    {
+        try
+        {
+            lock (_lock)
+            {
+                var data = RGACommands.SetFilamentEmission(1000);
+                bool success = _communicator.SendWriteCommand(
+                    (ushort)RGASubsystemAddress.EMBoard,
+                    (ushort)EMBoardFunctionCode.SetFilamentEmission,
+                    data);
+                return success ? RGAOperationResult.Ok() : RGAOperationResult.Fail("开启灯丝失败");
+            }
+        }
+        catch (Exception ex)
+        {
+            OnErrorOccurred(ex);
+            return RGAOperationResult.Fail(ex.Message);
+        }
+    }
+
+    /// <summary>
+    /// 关闭灯丝
+    /// </summary>
+    public RGAOperationResult TurnOffFilament()
+    {
+        try
+        {
+            lock (_lock)
+            {
+                var data = RGACommands.SetFilamentEmission(0);
+                bool success = _communicator.SendWriteCommand(
+                    (ushort)RGASubsystemAddress.EMBoard,
+                    (ushort)EMBoardFunctionCode.SetFilamentEmission,
+                    data);
+                return success ? RGAOperationResult.Ok() : RGAOperationResult.Fail("关闭灯丝失败");
+            }
+        }
+        catch (Exception ex)
+        {
+            OnErrorOccurred(ex);
+            return RGAOperationResult.Fail(ex.Message);
+        }
+    }
+
+    /// <summary>
     /// 设置放电时间
     /// </summary>
     public RGAOperationResult SetDischargeTime(ushort timeUs)

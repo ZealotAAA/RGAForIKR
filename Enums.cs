@@ -169,6 +169,18 @@ public enum FilamentSelect : ushort
 }
 
 /// <summary>
+/// 灯丝状态
+/// </summary>
+public enum FilamentState : ushort
+{
+    /// <summary>灯丝已关闭</summary>
+    Off = 0x0000,
+
+    /// <summary>灯丝已开启</summary>
+    On = 0x0001
+}
+
+/// <summary>
 /// 输出模式
 /// </summary>
 public enum OutputMode : ushort

@@ -290,6 +290,23 @@ var result = client.SetFilamentCurrentSafety(4.6);
 |------|------|------|
 | currentA | double | 电流安全值，单位 A |
 
+### 6.5 开启/关闭灯丝
+
+```csharp
+// 开启灯丝
+var result = client.TurnOnFilament();
+
+// 关闭灯丝
+var result = client.TurnOffFilament();
+```
+
+| 方法 | 说明 |
+|------|------|
+| `TurnOnFilament()` | 开启灯丝发射 |
+| `TurnOffFilament()` | 关闭灯丝发射 |
+
+> **注意**：开启灯丝前请确保已设置好灯丝发射电流（建议 1000 uA），否则可能导致灯丝损坏。
+
 ---
 
 ## 七、EM 板（检测器）控制
